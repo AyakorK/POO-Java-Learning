@@ -12,12 +12,14 @@ public class Characters {
     }
 
 
-    public Characters(double health, double attack, double initiative, String name, String role) {
+    public Characters(double health, double attack, double initiative, String name, String role, int shield, double magic) {
         this.health = health;
         this.attack = attack;
         this.initiative = initiative;
         this.name = name;
         this.role = role;
+        this.shield = shield;
+        this.magic = magic;
 
 
     }
@@ -69,51 +71,17 @@ public class Characters {
         return this.name;
     }
 
-    public String trueGetName() {
-
-        return this.name;
-    }
 
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public ArrayList toArray() {
-        ArrayList tab = new ArrayList();
-        tab.add(name + " - " + role);
+    public void attacked(double attack) {
+        this.health =- attack;
 
-       return tab;
     }
 
-    double health;
-    double attack;
-    double initiative;
-    String name;
-    String role;
-
-    public static String getP1() {
-        return p1;
-    }
-
-    public void setP1(String p1) {
-        this.p1 = p1;
-    }
-
-    public static String getP2() {
-        return p2;
-    }
-
-    public void setP2(String p2) {
-        this.p2 = p2;
-    }
-
-
-
-
-}
-
-class Warrior  extends Characters {
     public int getShield() {
         Scanner sc = new Scanner(System.in);
         System.out.println("What is the value of your shield");
@@ -124,33 +92,6 @@ class Warrior  extends Characters {
 
     public void setShield(int shield) {
         this.shield = shield;
-    }
-
-    int shield;
-
-    public Warrior(double health, double attack, double initiative, String name, int shield, String role) {
-        super(health, attack, initiative, name, role);
-        this.shield = shield;
-        this.role = role;
-    }
-
-    public void block() {
-        if (shield <= attack) {
-            attack = 0;
-            System.out.println(name + " a bloqué le coup !");
-        } else {
-            health -= attack - shield;
-        }
-
-    }
-
-}
-
-class Sorcerer extends Characters {
-
-    public Sorcerer(double health, double attack, double initiative, String name, String role, double magic) {
-        super(health, attack, initiative, name, role);
-        this.magic = magic;
     }
 
     public double getMagic() {
@@ -164,6 +105,46 @@ class Sorcerer extends Characters {
     public void setMagic(double magic) {
         this.magic = magic;
     }
+
+
+    double health;
+    double attack;
+    double initiative;
+    int shield;
+    double magic;
+    String name;
+    String role;
+
+
+}
+
+class Warrior  extends Characters {
+
+
+    public Warrior(double health, double attack, double initiative, String name, String role, int shield, int magic) {
+        super(health, attack, initiative, name, role, shield, magic);
+    }
+
+    public void block(double attack) {
+        if (this.shield >= attack) {
+            health -= (attack - attack);
+            System.out.println(name + " a bloqué le coup !");
+        } else {
+            health -= attack - shield;
+            System.out.println(name + " a bloqué " + shield + " de dégâts");
+        }
+
+    }
+
+}
+
+class Sorcerer extends Characters {
+
+    public Sorcerer(double health, double attack, double initiative, String name, String role, int shield, double magic) {
+        super(health, attack, initiative, name, role, shield, magic);
+
+    }
+
 
     public double getDamageSorcerer() {
        damageSorcerer = attack + magic;
@@ -214,8 +195,8 @@ class Thief extends Characters {
     double dodge;
     double critical;
 
-    public Thief (double health, double attack, double initiative, String name, String role) {
-        super(health, attack, initiative, name, role);
+    public Thief (double health, double attack, double initiative, String name, String role, int shield, double magic ) {
+        super(health, attack, initiative, name, role, shield , magic);
     }
 
 
