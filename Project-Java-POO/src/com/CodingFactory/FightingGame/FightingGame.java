@@ -7,7 +7,8 @@ public class FightingGame {
     public static void main(String[] args){
 
 
-    new Menu();
+    Menu app = new Menu();
+    app.startApplication();
 
 
 

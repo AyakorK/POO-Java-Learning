@@ -24,19 +24,19 @@ public class CharacterController {
         return this.Characters;
     }
 
-    public Object getPlayer1() {
-        return this.Player1;
+    public Characters getPlayer1() {
+        return (com.CodingFactory.FightingGame.Characters) this.Player1;
     }
 
-    public void setPlayer1(Object Player1) {
+    public void setPlayer1(Characters Player1) {
         this.Player1 = Player1;
     }
 
-    public Object getPlayer2() {
-        return this.Player2;
+    public Characters getPlayer2() {
+        return (com.CodingFactory.FightingGame.Characters) this.Player2;
     }
 
-    public void setPlayer2(Object Player2) {
+    public void setPlayer2(Characters Player2) {
         this.Player2 = Player2;
     }
 
