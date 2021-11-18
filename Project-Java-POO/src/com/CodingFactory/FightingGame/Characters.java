@@ -3,6 +3,14 @@ import java.util.*;
 
 public class Characters {
 
+    private static String p1;
+    private static String p2;
+
+    public String toString() {
+        return  "name=" + name +  " | " +
+                "role=" + role ;
+    }
+
 
     public Characters(double health, double attack, double initiative, String name, String role) {
         this.health = health;
@@ -56,29 +64,51 @@ public class Characters {
     public String getName() {
         Scanner sc = new Scanner(System.in);
         System.out.println("What is your character's name ?");
-        String name = sc.nextLine();
+        this.name = sc.nextLine();
 
-        return name;
+        return this.name;
     }
+
+    public String trueGetName() {
+
+        return this.name;
+    }
+
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getRole() {
-        return role;
-    }
+    public ArrayList toArray() {
+        ArrayList tab = new ArrayList();
+        tab.add(name + " - " + role);
 
-    public void setRole(String role) {
-        this.role = role;
+       return tab;
     }
 
     double health;
     double attack;
     double initiative;
     String name;
-
     String role;
+
+    public static String getP1() {
+        return p1;
+    }
+
+    public void setP1(String p1) {
+        this.p1 = p1;
+    }
+
+    public static String getP2() {
+        return p2;
+    }
+
+    public void setP2(String p2) {
+        this.p2 = p2;
+    }
+
+
 
 
 }
@@ -187,6 +217,8 @@ class Thief extends Characters {
     public Thief (double health, double attack, double initiative, String name, String role) {
         super(health, attack, initiative, name, role);
     }
+
+
 }
 
 
