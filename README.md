@@ -29,4 +29,4 @@ $ COHEN-JOLY Florian : https://github.com/FlorianCohenJoly
 
 ## Quality certification
 
-[![CodeFactor](https://www.codefactor.io/repository/github/ayakork/poo-java-learning/badge/project-java-poo(https://www.codefactor.io/repository/github/ayakork/poo-java-learning/overview/project-java-poo)
+[![CodeFactor](https://www.codefactor.io/repository/github/ayakork/poo-java-learning/badge/project-java-poo)](https://www.codefactor.io/repository/github/ayakork/poo-java-learning/overview/project-java-poo)
