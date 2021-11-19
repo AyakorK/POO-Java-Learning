@@ -4,6 +4,7 @@ import java.util.*;
 
 // Create a controller that will allow us to stock our characters
 
+public class CharacterController {
 
     //Create an ArrayList Characters
 
@@ -43,7 +44,7 @@ import java.util.*;
 
     // Let's create our Player1 by assigning him to the Character we selected first
 
-    public void setPlayer1(Characters Player1) {
+    public void setPlayer1(Object Player1) {
         this.Player1 = Player1;
     }
 
@@ -57,7 +58,7 @@ import java.util.*;
 
     // Create our second player by assigning him to the Character we selected in a second time
 
-    public void setPlayer2(Characters Player2) {
+    public void setPlayer2(Object Player2) {
         this.Player2 = Player2;
     }
 

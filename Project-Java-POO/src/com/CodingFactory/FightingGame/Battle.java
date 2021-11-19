@@ -214,7 +214,7 @@ public class Battle {
 
                                     } else {
 
-                                        // If the character is something else than a warrior
+                                        // If the character is something else than a warrior or a thief
 
                                         p1.health -= (p2.attack + p2.magic);
 
@@ -230,12 +230,18 @@ public class Battle {
 
                                     p2.magic /= 2;
 
+        //---------------------------------//
 
+                                    // If the character is a thief
 
                                 } else if (Objects.equals(p2.role, "thief")) {
 
+                                    // If he does a critical hit, double his damage
+
                                     p2.critical(p2);
+
                                     {
+                                        // If the target is a warrior
 
                                         if (Objects.equals(p1.role, "warrior")) {
 
@@ -253,7 +259,13 @@ public class Battle {
                                                 // If the shield has more points than the attack
 
                                             }  // But if attack is less powerful than the shield print than he totally blocked it with function
+
+                                            // If the target is a thief
+
                                         } else if (p1.role == "thief") {
+
+                                            //If he can , dodge or he takes the damages
+
                                             p1.dodge(p2);
 
                                         } else {
@@ -274,6 +286,8 @@ public class Battle {
 
                                     } else if (Objects.equals(p2.role, "none") || Objects.equals(p2.role, "warrior")) {
 
+                                    // If the target is a warrior
+
                                     if (Objects.equals(p1.role, "warrior")) {
 
                                         // Block the hit
@@ -290,6 +304,9 @@ public class Battle {
                                             // If the shield has more points than the attack
 
                                         }  // But if attack is less powerful than the shield print than he totally blocked it with function
+
+                                        // If the target is a thief
+
                                     } else if (p1.role == "thief") {
                                         p1.dodge(p2);
 
@@ -333,6 +350,8 @@ public class Battle {
                                                 // If the shield has more points than the attack
 
                                             }  // But if attack is less powerful than the shield print than he totally blocked it with function
+
+
                                         }else if (p1.role == "thief") {
                                             p1.dodge(p2);
                                         } else {

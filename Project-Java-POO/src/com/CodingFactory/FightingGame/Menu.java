@@ -34,7 +34,12 @@ public class Menu {
 
         // Print a message in the console that shows us different options.
 
-        System.out.println("Hello user, what do you want to do ?\n" + "1 - Create a new character\n" + "2 - Start a fight\n" + "3 - Delete a character\n" + "4 - Leave" );
+        System.out.println("""
+                Hello user, what do you want to do ?
+                1 - Create a new character
+                2 - Start a fight
+                3 - Delete a character
+                4 - Leave""");
 
         // Initialize our first scanner to make the user do his first choice
 
@@ -64,7 +69,12 @@ public class Menu {
 
             // After placing all the stats, ask for what achetype does the user want for his character
 
-            System.out.println("Now select his archetype \n" + "1 - Classical\n" + "2 - Warrior\n" + "3 - Sorcerer\n" + "4 - Thief");
+            System.out.println("""
+                    Now select his archetype\s
+                    1 - Classical
+                    2 - Warrior
+                    3 - Sorcerer
+                    4 - Thief""");
             Scanner createChar = new Scanner(System.in);
             String characterCreation = createChar.nextLine();
 
@@ -168,12 +178,18 @@ public class Menu {
 
                 // If not , ask to the user to create at least two characters and return him to the menu
 
-                System.out.println("Please create at least two characters\n" + "\n" );
+                System.out.println("""
+                        Please create at least two characters
+
+                        """);
                 startApplication();
             } else {
 
                 // In the case we have more than two elements in the array, Ask for an other choice
-                System.out.println("Let's start a fight, would you create or select your characters ??\n" + "1 - Choose characters that exists\n" + "2 - Return to principal menu");
+                System.out.println("""
+                        Let's start a fight, would you create or select your characters ??
+                        1 - Choose characters that exists
+                        2 - Return to principal menu""");
                 Scanner charMenu = new Scanner(System.in);
                 String characterSelection = charMenu.nextLine();
 
@@ -184,7 +200,7 @@ public class Menu {
 
                     // Initialize a new array infos that get our characters.
 
-                    ArrayList<Characters> infos = characterController.getCharacters();
+                    ArrayList infos = characterController.getCharacters();
 
                     // Make a loop that will print our Characters
 
@@ -275,7 +291,7 @@ public class Menu {
 
             // Create a new list that stock all of our characters
 
-                ArrayList<Characters> infos = characterController.getCharacters();
+                ArrayList infos = characterController.getCharacters();
 
                 // If our array is empty , ask to create at least one character before deleting "void" and return him to main menu
 
@@ -311,7 +327,11 @@ public class Menu {
 
                     // Ask to the user if he really wants to suppress it
 
-                    System.out.println("Are you sure about deleting it ?\n" + "1 - Yes\n" + "2 - No\n");
+                    System.out.println("""
+                            Are you sure about deleting it ?
+                            1 - Yes
+                            2 - No
+                            """);
                         Scanner charConf = new Scanner(System.in);
                         int charConfirmed = charConf.nextInt();
 
@@ -323,19 +343,17 @@ public class Menu {
 
                             System.out.println(infos.get(i).toString() + " has been deleted\n");
                             infos.remove(i);
-                            startApplication();
 
 
                             // If he does not want
 
-                        } else {
+                        }  // Go back to the menu
 
-                            // Go back to the menu
-
-                            startApplication();
-                        }
+                    startApplication();
 //---------------------------------//
+
                     // If he wants to leave the application
+
                 } else if (Objects.equals(option, "4")) {
 
                     // Just exit the system
