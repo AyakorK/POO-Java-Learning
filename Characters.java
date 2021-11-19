@@ -4,7 +4,7 @@ import java.util.*;
 public class Characters {
 
 
-    // Creation of the constructor of our Characters by using default values and parameters
+    // Creation of the Characters constructor by using default values and parameters
 
     public Characters(double health, double attack, double initiative, String name, String role, int shield, double magic) {
 
@@ -21,7 +21,7 @@ public class Characters {
 
     }
 
-    // Create a getter for our health
+    // Create the health getter
 
     public double getHealth() {
 
@@ -38,17 +38,18 @@ public class Characters {
         return health;
     }
 
-    //Create a setter for our health
+    //Create the health setter
 
     public void setHealth(double health) {
         this.health = health;
     }
 
-    //Create a getter for our attack
+    //Create the attack getter
 
     public double getAttack() {
 
         // Ask to the user how many AttackPoints he wants for his character
+
         Scanner sc = new Scanner(System.in);
         System.out.println("How strong is he ? (Attack points)");
 
@@ -60,36 +61,40 @@ public class Characters {
         return attack;
     }
 
-    //Create a setter for our attack
+    //Create the attack setter
 
     public void setAttack(double attack) {
         this.attack = attack;
     }
 
-    //Create a getter for our Initiative
+    //Create the initiative getter
 
     public double getInitiative() {
 
         // Ask to the user how many InitiativePoints he wants for his character
+
         Scanner sc = new Scanner(System.in);
         System.out.println("How fast is he ? (Initiative points)");
 
         // Return initiative that user types to his Character's initiative
+
         double initiative = sc.nextDouble();
 
         return initiative;
     }
 
-    // Create a setter for our initiative
+    // Create the initiative setter
 
     public void setInitiative(double initiative) {
         this.initiative = initiative;
     }
 
-    // Create a getter for our name
+    // Create the names getter
 
     public String getName() {
+
         // Ask to the user what name does he want for his character
+
         Scanner sc = new Scanner(System.in);
         System.out.println("What is your character's name ?");
 
@@ -101,13 +106,13 @@ public class Characters {
     }
 
 
-    // Create a setter for our name
+    // Create the names setter
 
     public void setName(String name) {
         this.name = name;
     }
 
-    // Create a getter for our shield for our warrior
+    // Create the warrior shields getter
 
     public int getShield() {
 
@@ -123,13 +128,13 @@ public class Characters {
         return shield;
     }
 
-    // Create a setter for our shield
+    // Create the warrior shields setter
 
     public void setShield(int shield) {
         this.shield = shield;
     }
 
-    // Create a getter for our Magical Damages for our Wizards
+    // Create the wizard magical dammages getter
 
     public double getMagic() {
 
@@ -139,12 +144,13 @@ public class Characters {
         System.out.println("How powerful is your sorcerer ? (Magic points)");
 
         // Return what the user typed to our Character's Magical Damages
+
         double magic = sc.nextInt();
 
         return magic;
     }
 
-    // Create a setter for our Magical Damages
+    // Create the wizard magical damages setter
 
     public void setMagic(double magic) {
         this.magic = magic;
@@ -160,6 +166,7 @@ public class Characters {
     String name;
     String role;
 
+
     public String toString() {
 
         // ToString is here to print into a String format Character's name + role when asked .
@@ -169,21 +176,89 @@ public class Characters {
 
     }
 
-    public double critical(double attack) {
+    // method for the thief crit with a condition
+
+    public double critical(Characters player) {
         double Crits = (int) (Math.random() * 101);
-        boolean Critical = false;
-        if (Crits <= 10 && Critical == false) {
+        Critical();
+
+    // if the probabilty to crit is right then print it else theres no crit and the inflicted base damage is printed
+
+        if (Crits <= 20 && !Critical) {
             System.out.println(Crits);
-            health -= attack * 2;
+            player.attack = attack * 2;
             System.out.println("Thief inflicted critical damages");
-            Critical = true;
         } else {
             System.out.println(Crits);
-            health -= attack;
+            attack = criticalDamages(player);
+
+        }
+        return player.attack;
+
+    }
+
+    // if the thief hit a crit the round before then he cant crit again at the current round
+
+    public double criticalDamages(Characters player) {
+        if (Critical && (player.attack == (attack*2))) {
+            player.attack /= 2;
+        }
+        return player.attack;
+    }
+
+    // condition verification with a boolean // true or false depends when you crit or not
+    public boolean Critical() {
+        double CritPercentile = (int) (Math.random() * 101);
+        if ( CritPercentile <= 50 && !Critical) {
+
+            Critical = true;
+        } else {
+
             Critical = false;
         }
-        return attack;
+        return Critical;
+
     }
+
+    boolean Critical;
+
+    // method for the thief dodge wiht a condition
+
+    public boolean dodge(Characters player) {
+        int Dodges = (int) (Math.random() * 101);
+        Dodge();
+
+        // if the probabilty to dodge is right then print it else theres no dodge and we print it too
+
+        if (Dodges <= 30 && !Dodge) {
+            System.out.println(Dodges);
+            health -= player.attack * 0;
+            System.out.println("Le coup a été esquivé !");
+        } else {
+            System.out.println(Dodges);
+            health -= player.attack;
+            System.out.println(name + " took " + player.attack + " damages from " + player.name);
+        }
+        return Dodge;
+    }
+
+    // condition verification with a boolean true or false
+
+    public boolean Dodge() {
+        double DodgePercentile = (int) (Math.random() * 101);
+        if ( DodgePercentile <= 20 && !Dodge) {
+
+            Dodge = true;
+        } else {
+
+            Dodge = false;
+        }
+        return Dodge;
+
+    }
+    boolean Dodge;
+
+    // method for the warrior block with a condition  // Initialize a method that will permit us to block damages
 
     public void block(double attack) {
 
@@ -210,26 +285,10 @@ public class Characters {
 
     }
 
-    public boolean dodge(double attack) {
-        int Dodges = (int) (Math.random() * 101);
-        boolean Dodge = false;
-        if (Dodges <= 10 && !Dodge) {
-            System.out.println(Dodges);
-            health -= attack * 0;
-            System.out.println("Le coup a été esquivé !");
-            Dodge = true;
-        } else {
-            System.out.println(Dodges);
-            health -= attack;
-            Dodge = false;
-        }
-        return Dodge;
-    }
-
 
 }
 
-// Create a warrior that has the same specifities that the Characters but adding some functionalities
+// Create a warrior that has the same specifities that the Characters but adding some functionalities over it
 
 class Warrior  extends Characters {
 
@@ -239,11 +298,9 @@ class Warrior  extends Characters {
         super(health, attack, initiative, name, role, shield, magic);
     }
 
-    // Initialize a method that will permit us to block damages
-
 }
 
-// Create a sorcerer that has the same specifities that the Characters but adding some functionalities
+// Create a sorcerer that has the same specifities that the Characters but adding some functionalities over it
 
 class Sorcerer extends Characters {
 
@@ -259,9 +316,11 @@ class Sorcerer extends Characters {
 
 }
 
-// Create a thief that has the same specifities that the Characters but adding some functionalities especailly critical damages & dodge
+// Create a thief that has the same specifities that the Characters but adding some functionalities over it
 
 class Thief extends Characters {
+
+//  // Create a constructor for our sorcerer that creates a new Sorcerer that has the same specifities than the original Character
 
     public Thief(double health, double attack, double initiative, String name, String role, int shield, double magic) {
         super(health, attack, initiative, name, role, shield, magic);
