@@ -20,7 +20,7 @@ This repository is the result of a school exercise and of a sprint of 1 week to 
 This work has been made with students when we were in a group here is their github :
 
 ```bash
-$ KOUAKOU Alan : https://github.com/justRunnz
+$ KOUAKOU Alan : https://github.com/alan190902
 $ COHEN-JOLY Florian : https://github.com/FlorianCohenJoly
 ```
 
