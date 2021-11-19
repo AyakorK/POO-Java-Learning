@@ -188,7 +188,7 @@ public class Menu {
                 // In the case we have more than two elements in the array, Ask for an other choice
                 System.out.println("""
                         Let's start a fight, would you create or select your characters ??
-                        1 - Choose characters that exists
+                        1 - Choose characters 
                         2 - Return to principal menu""");
                 Scanner charMenu = new Scanner(System.in);
                 String characterSelection = charMenu.nextLine();

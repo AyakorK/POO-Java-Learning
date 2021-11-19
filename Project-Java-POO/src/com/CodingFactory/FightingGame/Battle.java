@@ -16,7 +16,10 @@ public class Battle {
 
 
         Scanner start = new Scanner(System.in);
-        System.out.println("Are your sure to launch that ?\n" + "1 - Launch the fight\n" + "2 - Leave the game");
+        System.out.println("""
+                Are your sure to launch that ?
+                1 - Launch the fight
+                2 - Leave the game""");
         String option = start.nextLine();
 
         if (option.equals("1")) {
